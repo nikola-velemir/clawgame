@@ -23,6 +23,7 @@ ipch/
 *.VC.opendb
 *.cachefile
 *.opendb
+*/packages
 
 ##############################
 # C++ Compiled files
