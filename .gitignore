@@ -1,0 +1,95 @@
+##############################
+# Visual Studio
+##############################
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results in ANY folder (outer or inner Claw/)
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+ARM/
+ARM64/
+[Bb]in/
+[Oo]bj/
+ipch/
+*.VC.db
+*.VC.opendb
+*.cachefile
+*.opendb
+
+##############################
+# C++ Compiled files
+##############################
+*.o
+*.obj
+*.lo
+*.slo
+
+# Precompiled headers
+*.gch
+*.pch
+
+##############################
+# Libraries (generated or downloaded)
+##############################
+*.lib
+*.a
+*.la
+*.lai
+*.dll
+*.so
+*.dylib
+
+##############################
+# Linker & Debug info
+##############################
+*.ilk
+*.pdb
+*.pdbx
+*.dwo
+
+##############################
+# Executables
+##############################
+*.exe
+*.out
+*.app
+
+##############################
+# CMake (if used)
+##############################
+CMakeFiles/
+CMakeCache.txt
+build/
+out/
+cmake_install.cmake
+Makefile
+
+##############################
+# vcpkg (only ignore installed packages)
+##############################
+vcpkg_installed/
+
+##############################
+# Shader compiled binaries
+##############################
+*.spv
+
+##############################
+# OS files
+##############################
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS (if shared)
+.DS_Store
+*.DS_Store
