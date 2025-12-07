@@ -175,6 +175,7 @@
     <None Include="tokeninsert.vert" />
     <None Include="toy.frag" />
     <None Include="toy.vert" />
+    <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="dino.png" />
@@ -187,6 +188,9 @@
     <Image Include="teddy.png" />
     <Image Include="token.png" />
     <Image Include="token_insert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CmakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
