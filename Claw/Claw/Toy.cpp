@@ -47,7 +47,8 @@ Toy createToy(const float x, const float y, const float width, const float heigh
 void Toy::render(const GLuint shader, const glm::mat4& projection, float aspect)
 {
     glUseProgram(shader);
-
+    GLint alphaLoc = glGetUniformLocation(shader, "alpha");
+    glUniform1f(alphaLoc, 1.0f);
     // Pass offset to shader
     GLint offsetLoc = glGetUniformLocation(shader, "uOffset");
     glUniform2f(offsetLoc, x + uX, y + uY);

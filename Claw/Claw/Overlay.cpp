@@ -8,13 +8,16 @@ void Overlay::render(const GLuint overLayShader, const glm::mat4& projection, fl
 	GLint alphaLoc = glGetUniformLocation(overLayShader, "alpha");
 	glUniform1f(alphaLoc, transparency);
 
-	glm::mat4 model = glm::mat4(1.0f); // identity only
+	//glm::mat4 model = glm::mat4(1.0f); // identity only
 
-	GLuint modelLoc = glGetUniformLocation(overLayShader, "model");
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+	//GLuint modelLoc = glGetUniformLocation(overLayShader, "model");
+	//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 	GLint projLoc = glGetUniformLocation(overLayShader, "projection");
 	if (projLoc >= 0) glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+	GLint offsetLoc = glGetUniformLocation(overLayShader, "uOffset");
+	glUniform2f(offsetLoc, 0.0f, 0.0f);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->texture);

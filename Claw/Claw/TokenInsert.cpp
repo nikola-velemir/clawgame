@@ -6,21 +6,22 @@
 void TokenInsert::render(const GLuint shader, const glm::mat4& projection, float aspect)
 {
 	glUseProgram(shader);
-
+	GLint alphaLoc = glGetUniformLocation(shader, "alpha");
+	glUniform1f(alphaLoc, 1.0f);
 	// --- PROJECTION ---
 	GLint projLoc = glGetUniformLocation(shader, "projection");
 	if (projLoc >= 0)
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 	// --- MODEL MATRIX ---
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(this->x, this->y, 0.0f));
-	model = glm::scale(model, glm::vec3(this->width, this->height, 1.0f));
+	//glm::mat4 model = glm::mat4(1.0f);
+	//model = glm::translate(model, glm::vec3(this->x, this->y, 0.0f));
+	//model = glm::scale(model, glm::vec3(this->width, this->height, 1.0f));
 
 
-	GLint modelLoc = glGetUniformLocation(shader, "model");
-	if (modelLoc >= 0)
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+	//GLint modelLoc = glGetUniformLocation(shader, "model");
+	//if (modelLoc >= 0)
+	//	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 	// --- TEXTURE ---
 	glActiveTexture(GL_TEXTURE0);

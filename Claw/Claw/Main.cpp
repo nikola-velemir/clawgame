@@ -87,17 +87,13 @@ int main()
 	InitTextRenderer();
 	InitNameplateShader();
 
-	unsigned int ropeShader = createShader("rope.vert", "rope.frag");
-	unsigned int clawShader = createShader("claw.vert", "claw.frag");
-	unsigned int boxShader = createShader("box.vert", "box.frag");
-	unsigned int outerLightsSahder = createShader("lightsouter.vert", "lightsouter.frag");
-	unsigned int fingerShader = createShader("finger.vert", "finger.frag");
-	unsigned int toyShader = createShader("toy.vert", "toy.frag");
-	unsigned int overlayShader = createShader("overlay.vert", "overlay.frag");
-	unsigned int tokenInsertShader = createShader("tokeninsert.vert", "tokeninsert.frag");
+	unsigned int ropeShader = createShader("rope.vert", "basic.frag");
+	unsigned int basicShader = createShader("basic.vert", "basic.frag");
+	unsigned int fingerShader = createShader("finger.vert", "basic.frag");
+	unsigned int texShader = createShader("tex.vert", "tex.frag");
 
 	Overlay overlay = createOverlay(worldWidth, worldHeight);
-	Light light = createLight(-0.5f, 0.9f, 0.4f, 0.25f, worldWidth, worldHeight);
+	Light light = createLight(-0.5f, 0.9f, 0.25f, 0.15f, worldWidth, worldHeight);
 
 	claw = createClaw(worldWidth, worldHeight);
 
@@ -217,13 +213,13 @@ int main()
 			t->uY = palmY - t->y;
 		}
 		glClear(GL_COLOR_BUFFER_BIT); // Bojenje pozadine
-		claw.render(clawShader, ropeShader, fingerShader, projection, aspect);
-		light.render(outerLightsSahder, projection, aspect);
-		box.renderClaimZone(boxShader, projection);
+		claw.render(basicShader, ropeShader, fingerShader, projection, aspect);
+		light.render(texShader, projection, aspect);
+		box.renderClaimZone(basicShader, projection);
 
 		for (Toy& t : toys) {
 			if (t.state == ToyState::Collected) continue;
-			t.render(toyShader, projection, aspect);
+			t.render(texShader, projection, aspect);
 			if (t.x + t.uX >= 0.6f && t.y + t.uY <= -0.7f) {
 				if (!blinking) {
 					
@@ -233,15 +229,15 @@ int main()
 			}
 		}
 
-		box.renderBottom(boxShader, projection);
+		box.renderBottom(basicShader, projection);
 
-		box.renderDropZone(boxShader, projection);
-		box.renderClaimZoneStrip(boxShader, projection);
-		box.renderTop(boxShader, projection);
+		box.renderDropZone(basicShader, projection);
+		box.renderClaimZoneStrip(basicShader, projection);
+		box.renderTop(basicShader, projection);
 
-		box.renderLeft(boxShader, projection);
+		box.renderLeft(basicShader, projection);
 
-		box.renderRight(boxShader, projection);
+		box.renderRight(basicShader, projection);
 		if (blinking) {
 			double elapsed = glfwGetTime() - blinkStartTime;
 			// Alternate every 0.5 seconds
@@ -250,9 +246,9 @@ int main()
 			else
 				light.currentState = LightState::Green;
 		}
-		overlay.render(overlayShader, projection, aspect, BOX_TRANSPARENCY);
+		overlay.render(texShader, projection, aspect, BOX_TRANSPARENCY);
 
-		tokenInsert.render(tokenInsertShader, projection, aspect);
+		tokenInsert.render(texShader, projection, aspect);
 		DrawNameplateWorld("Nikola Velemir SV8/2022", projection, worldWidth, worldHeight);
 
 		glfwSwapBuffers(window); // Zamena bafera - prednji i zadnji bafer se menjaju kao štafeta; dok jedan procesuje, drugi se prikazuje.

@@ -156,25 +156,15 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="box.frag" />
-    <None Include="box.vert" />
-    <None Include="claw.frag" />
-    <None Include="claw.vert" />
-    <None Include="finger.frag" />
+    <None Include="basic.frag" />
+    <None Include="basic.vert" />
     <None Include="finger.vert" />
-    <None Include="lightsouter.frag" />
-    <None Include="lightsouter.vert" />
     <None Include="nameplate.frag" />
     <None Include="nameplate.vert" />
-    <None Include="overlay.frag" />
-    <None Include="overlay.vert" />
     <None Include="packages.config" />
-    <None Include="rope.frag" />
     <None Include="rope.vert" />
-    <None Include="tokeninsert.frag" />
-    <None Include="tokeninsert.vert" />
-    <None Include="toy.frag" />
-    <None Include="toy.vert" />
+    <None Include="tex.frag" />
+    <None Include="tex.vert" />
     <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>

@@ -110,28 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="box.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="box.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="claw.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="claw.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="finger.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
     <None Include="finger.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="lightsouter.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="lightsouter.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
     <None Include="nameplate.frag">
@@ -140,31 +119,22 @@
     <None Include="nameplate.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
-    <None Include="overlay.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="overlay.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="rope.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
     <None Include="rope.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
-    <None Include="tokeninsert.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="tokeninsert.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="toy.frag">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
-    <None Include="toy.vert">
-      <Filter>Resource Files\shaders</Filter>
-    </None>
     <None Include="vcpkg.json" />
+    <None Include="basic.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="basic.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="tex.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="tex.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="dino.png">

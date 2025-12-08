@@ -304,11 +304,10 @@ void Box::renderTop(GLuint shader, const glm::mat4& projection)
 static void applyMatrices(GLuint shader, const glm::mat4& projection) {
 	glUseProgram(shader);
 
-	glm::mat4 model = glm::mat4(1.0f);
-
-	GLuint modelLoc = glGetUniformLocation(shader, "model");
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
 	GLuint projLoc = glGetUniformLocation(shader, "projection");
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+	GLint offsetLoc = glGetUniformLocation(shader, "uOffset");
+
+	glUniform2f(offsetLoc, 0.0f, 0.0f);
 }

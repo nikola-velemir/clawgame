@@ -13,15 +13,6 @@ void Light::render(const GLuint shader, const glm::mat4& projection, float aspec
 	if (projLoc >= 0)
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-	// --- MODEL MATRIX ---
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(this->x, this->y, 0.0f));
-	model = glm::scale(model, glm::vec3(this->width, this->height, 1.0f));
-
-
-	GLint modelLoc = glGetUniformLocation(shader, "model");
-	if (modelLoc >= 0)
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 	// --- TEXTURE ---
 	glActiveTexture(GL_TEXTURE0);
@@ -32,7 +23,7 @@ void Light::render(const GLuint shader, const glm::mat4& projection, float aspec
 
 	// --- DRAW ---
 	glBindVertexArray(this->VAO);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	glBindVertexArray(0);
 }
 
@@ -51,11 +42,12 @@ Light createLight(float x, float y, float width, float height, float xMax, float
 
 	float vertices[] = {
 		// x, y, u, v
-		-0.5f,  0.5f, 0.0f, 1.0f,  // top-left
-		-0.5f, -0.5f, 0.0f, 0.0f,  // bottom-left
-		 0.5f, -0.5f, 1.0f, 0.0f,  // bottom-right
-		 0.5f,  0.5f, 1.0f, 1.0f   // top-right
+		x - scaledW / 2,  y - scaledH / 2,  0.0f, 0.0f,   // bottom-left
+		x + scaledW / 2,  y - scaledH / 2,  1.0f, 0.0f,   // bottom-right
+		x - scaledW / 2,  y + scaledH / 2,  0.0f, 1.0f,   // top-left
+		x + scaledW / 2,  y + scaledH / 2,  1.0f, 1.0f    // top-right
 	};
+
 
 	glGenVertexArrays(1, &light.VAO);
 	glGenBuffers(1, &light.VBO);
