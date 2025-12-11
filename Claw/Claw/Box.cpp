@@ -24,10 +24,10 @@ Box createBox(float xMax, float yMax)
 	Box box = Box{};
 	float topVertices[] = {
 
-		xMax,yMax * 0.825f, boxR, boxG, boxB,
-		-xMax, yMax * 0.825f, boxR, boxG, boxB,
 		-xMax, yMax * 0.65f, boxR, boxG, boxB,
-		xMax,yMax * 0.65f, boxR, boxG, boxB
+		xMax,yMax * 0.65f, boxR, boxG, boxB,
+		-xMax, yMax * 0.825f, boxR, boxG, boxB,
+		xMax,yMax * 0.825f, boxR, boxG, boxB,
 	};
 	float bottomVertices[] = {
 		-xMax, -yMax, boxR, boxG, boxB,  // bottom-left
@@ -38,14 +38,14 @@ Box createBox(float xMax, float yMax)
 	float leftVertices[] = {
 	-xMax, -yMax * 0.9f, boxR, boxG, boxB,  // bottom-left
 	 -xMax * 0.9f, -yMax * 0.9f, boxR, boxG, boxB,  // bottom-right
-	-xMax * 0.9f,yMax * 0.825f , boxR, boxG, boxB, // top-left
-	 -xMax * 1.0f,yMax * 0.825f , boxR, boxG, boxB  // top-right
+	 -xMax * 1.0f,yMax * 0.825f , boxR, boxG, boxB,  // top-right
+	- xMax * 0.9f,yMax * 0.825f , boxR, boxG, boxB, // top-left
 	};
 	float rightVertices[] = {
 	xMax * 1.0f,yMax * 0.825f, boxR, boxG, boxB,  // bottom-left
 	xMax * 0.9f,yMax * 0.825f, boxR, boxG, boxB,  // bottom-right
-	xMax * 0.9f,-yMax, boxR, boxG, boxB, // top-left
-	xMax * 1.0f,-yMax, boxR, boxG, boxB  // top-right
+	xMax * 1.0f,-yMax, boxR, boxG, boxB,  // top-right
+	xMax * 0.9f,-yMax, boxR, boxG, boxB // top-left
 	};
 
 	float claimZoneVertices[] = {
@@ -277,14 +277,14 @@ void Box::renderRight(GLuint shader, const glm::mat4& projection)
 {
 	applyMatrices(shader, projection);
 	glBindVertexArray(right.VAO);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, right.vertexCount);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, right.vertexCount);
 }
 
 void Box::renderLeft(GLuint shader, const glm::mat4& projection)
 {
 	applyMatrices(shader, projection);
 	glBindVertexArray(left.VAO);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, left.vertexCount);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, left.vertexCount);
 }
 
 void Box::renderBottom(GLuint shader, const glm::mat4& projection)
@@ -298,7 +298,7 @@ void Box::renderTop(GLuint shader, const glm::mat4& projection)
 {
 	applyMatrices(shader, projection);
 	glBindVertexArray(top.VAO);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, top.vertexCount);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, top.vertexCount);
 }
 
 static void applyMatrices(GLuint shader, const glm::mat4& projection) {
